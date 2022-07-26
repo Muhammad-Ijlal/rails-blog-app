@@ -1,0 +1,40 @@
+<main role="main">
+  <section class="text-center">
+    <div class="container py-5">
+      <h1 class="jumbotron-heading">Users Listing Page</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <% @users.each do |user| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> 
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#add45c"></rect>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#eceeef" dy=".3em"><%= user.username %></text>
+              </svg>
+              <div class="card-body">
+                <p class="card-text"><%= user.email %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to 'Show', user_path(user),  class: "btn btn-sm btn-success mx-1" %>
+                    <% if logged_in? && user == current_user %>
+                      <%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary mx-1" %>
+                      <%= link_to 'Delete', user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-danger mx-1" %>
+                    <% end %>
+                  </div>
+                  <small class="text-muted"> Create <%= time_ago_in_words(user.created_at) %> ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+</main>

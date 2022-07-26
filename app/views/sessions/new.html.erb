@@ -1,0 +1,21 @@
+<div if="page-content">
+  <h1 class="text-center mt-4">Login to alpha blog</h1>
+  <div class="container p-5 mb-4 bg-light">
+    <%= form_with(scope: @session, url: login_path, data: {turbo: false}) do |f| %>
+      <form>
+        <div class="form-group row mb-5">
+          <%= f.label :email, class: "form-label" %><br/>
+          <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%>
+        </div>
+        <div class="form-group row mb-5">
+          <%= f.label :password, class: "form-label" %><br/>
+          <%= f.password_field :password, class: "form-control", placeholder: "Enter your  password"%>
+        </div>
+
+        <div class="form-group row justify-content-center md-5">
+          <%= f.submit "Log in", class: "col-5 text-center btn btn-success" %>
+        </div>      
+      </form>
+    <% end %> 
+  </div>
+</div>
