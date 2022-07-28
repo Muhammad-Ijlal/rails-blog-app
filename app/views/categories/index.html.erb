@@ -1,0 +1,37 @@
+<main role="main">
+  <section class="text-center">
+    <div class="container py-5">
+      <h1 class="jumbotron-heading">Categories Listing Page</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+    </div>
+  </section>
+  <div class="flickr_pagination">
+    <%= will_paginate @categories %>
+  </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <% @categories.each do |category| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> 
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#add45c"></rect>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#eceeef" dy=".3em"><%= link_to category.name, category_path(category) %></text>
+              </svg>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to 'Show', category_path(category),  class: "btn btn-sm btn-success mx-1" %>
+                  </div>
+                  <small class="text-muted"> Created <%= time_ago_in_words(category.created_at) %> ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+</main>

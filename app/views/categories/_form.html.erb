@@ -1,0 +1,15 @@
+<div class="container p-5 mb-4 bg-light">
+  <%= render 'shared/errors', obj: @category %>
+  <%= form_with(model: @category, data: {turbo: false}) do |f| %>
+    <form>
+      <div class="form-group row mb-5">
+        <%= f.label :name, class: "form-label" %><br/>
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter a category name"%>
+      </div>
+
+      <div class="form-group row justify-content-center md-5">
+        <%= f.submit class: "col-5 text-center btn btn-success" %>
+      </div>      
+    </form>
+  <% end %> 
+</div>
